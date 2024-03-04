@@ -1,0 +1,17 @@
+.table-element {
+    width: 100%;
+    border: 1px solid black;
+    text-align: center;
+    background-color: mediumslateblue;
+}
+
+.table {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: flex-end;
+    height: 480px;
+    background-color: grey;
+    border: 1px solid black;
+    gap: auto;
+}
