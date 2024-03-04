@@ -15,3 +15,7 @@
     border: 1px solid black;
     gap: auto;
 }
+
+.selected {
+    background-color: chocolate !important;
+}
