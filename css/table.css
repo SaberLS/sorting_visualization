@@ -1,6 +1,6 @@
 .table-element {
     width: 100%;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.471);
     text-align: center;
     background-color: mediumslateblue;
 }
@@ -10,7 +10,6 @@
     flex-direction: row;
     justify-content: stretch;
     align-items: flex-end;
-    height: 480px;
     background-color: grey;
     border: 1px solid black;
     gap: auto;
@@ -18,4 +17,10 @@
 
 .selected {
     background-color: chocolate !important;
+}
+
+.sort-container {
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    height: 480px;
 }
