@@ -2,7 +2,14 @@ import { sleep, swap } from "./helper";
 
 let counter = 0;
 
-export default async function quick_sort(container, array, leftBound, rightBound) {
+export default async function quick_sort(container, array) {
+  counter = 0;
+  container.querySelector('.iterations').innerHTML = counter;
+
+  await sort(container, array, 0, array.length - 1);
+}
+
+async function sort(container, array, leftBound, rightBound) {
   counter++;
   container.querySelector('.iterations').innerHTML = counter;
   if (leftBound >= rightBound || leftBound < 0) {
@@ -11,9 +18,8 @@ export default async function quick_sort(container, array, leftBound, rightBound
 
   const pivot = await partition(container, array, leftBound, rightBound);
 
-  await quick_sort(container, array, leftBound, pivot - 1);
-  await quick_sort(container, array, pivot + 1, rightBound);
-
+  await sort(container, array, leftBound, pivot - 1);
+  await sort(container, array, pivot + 1, rightBound);
 }
 
 async function partition(container, array, leftBound, rightBound) {

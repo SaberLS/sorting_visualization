@@ -2,21 +2,25 @@ import { sleep } from "./helper";
 
 let counter = 0;
 
-async function iterateCounter(container) {
-  counter++;
+export default async function merge_sort(container, array) {
+  counter = 0;
   container.querySelector('.iterations').innerHTML = counter;
+
+  await sort(container, array, 0, array.length - 1);
 }
 
-export default async function merge_sort(container, array, left, right) {
-  const length = right - left + 1;
-  await iterateCounter(container);
+async function sort(container, array, left, right) {
+  counter++;
+  container.querySelector('.iterations').innerHTML = counter;
 
+  const length = right - left + 1;
   if (length <= 1) {
     return;
   }
+
   const middle = left + Math.round(length / 2);
-  await merge_sort(container, array, left, middle - 1);
-  await merge_sort(container, array, middle, right);
+  await sort(container, array, left, middle - 1);
+  await sort(container, array, middle, right);
 
   await merge(container, array, { leftBound: left, rightBound: middle - 1 }, { leftBound: middle, rightBound: right });
 }
