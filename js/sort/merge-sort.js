@@ -1,3 +1,4 @@
+import { cancel } from "../app";
 import { sleep } from "./helper";
 
 let counter = 0;
@@ -14,13 +15,15 @@ async function sort(container, array, left, right) {
   container.querySelector('.iterations').innerHTML = counter;
 
   const length = right - left + 1;
-  if (length <= 1) {
+  if (length <= 1 || cancel === 1) {
     return;
   }
 
   const middle = left + Math.round(length / 2);
-  await sort(container, array, left, middle - 1);
-  await sort(container, array, middle, right);
+  if (cancel === 0) {
+    await sort(container, array, left, middle - 1);
+    await sort(container, array, middle, right);
+  }
 
   await merge(container, array, { leftBound: left, rightBound: middle - 1 }, { leftBound: middle, rightBound: right });
 }
@@ -33,7 +36,7 @@ async function merge(container, array, left, right) {
   let rightIndex = 0;
   let arrayIndex = left.leftBound;
 
-  while (leftIndex < leftSlice.length && rightIndex < rightSlice.length) {
+  while (leftIndex < leftSlice.length && rightIndex < rightSlice.length && cancel === 0) {
     container.querySelector(`#arr-index-${arrayIndex}`).classList.add('selected');
     if (leftSlice[leftIndex] < rightSlice[rightIndex]) {
       array[arrayIndex] = leftSlice[leftIndex];
@@ -46,21 +49,21 @@ async function merge(container, array, left, right) {
     }
   }
 
-  while (leftIndex < leftSlice.length) {
+  while (leftIndex < leftSlice.length && cancel === 0) {
     container.querySelector(`#arr-index-${arrayIndex}`).classList.add('selected');
     array[arrayIndex] = leftSlice[leftIndex];
     arrayIndex++;
     leftIndex++;
   }
 
-  while (rightIndex < rightSlice.length) {
+  while (rightIndex < rightSlice.length && cancel === 0) {
     container.querySelector(`#arr-index-${arrayIndex}`).classList.add('selected');
     array[arrayIndex] = rightSlice[rightIndex];
     arrayIndex++;
     rightIndex++;
   }
 
-  for (let k = left.leftBound; k <= right.rightBound; k++) {
+  for (let k = left.leftBound; k <= right.rightBound && cancel === 0; k++) {
     await sleep(300);
     container.querySelector(`#arr-index-${k}`).classList.remove("selected");
     container.querySelector(`#arr-index-${k}`).innerHTML = array[k];

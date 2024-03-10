@@ -1,4 +1,5 @@
 import { sleep, swap } from "./helper";
+import { cancel } from "../app";
 
 export default async function bubble_sort(container, array) {
   let counter = 0;
@@ -7,9 +8,9 @@ export default async function bubble_sort(container, array) {
   let swapped = true;
   let current;
   let previous;
-  while (swapped) {
+  while (swapped && cancel === 0) {
     swapped = false;
-    for (let i = 1; i < array.length; i++) {
+    for (let i = 1; (i < array.length && cancel === 0); i++) {
       previous = container.querySelector(`#arr-index-${i - 1}`);
       current = container.querySelector(`#arr-index-${i}`);
 
