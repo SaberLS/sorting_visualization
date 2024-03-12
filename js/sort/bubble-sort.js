@@ -2,6 +2,8 @@ import { sleep, swap } from "./helper";
 import { cancel } from "../app";
 
 export default async function bubble_sort(container, array) {
+  console.log(container);
+  console.log(array);
   let counter = 0;
   container.querySelector(".iterations").innerHTML = counter;
 

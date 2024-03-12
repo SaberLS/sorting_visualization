@@ -24,9 +24,43 @@
 
   <body>
     <button id="sort-btn">sort</button>
-    <div id="bubble-sort" class="sort-container"></div>
-    <div id="merge-sort" class="sort-container"></div>
-    <div id="quick-sort" class="sort-container"></div>
+    <button id="random-btn">random</button>
+    <button id="descending-btn">descending</button>
+    <button id="sorted-btn">sorted</button>
+
+    <div id="bubble" class="sort-container">
+      <div class="table"></div>
+      <div class="stats">
+        <p>iterations: <span class="iterations">0</span></p>
+        <div class="case">
+          <p>best case: <i>n</i></p>
+          <p>average case: <i>n²</i></p>
+          <p>worst case: <i>n²</i></p>
+        </div>
+      </div>
+    </div>
+    <div id="merge" class="sort-container">
+      <div class="table"></div>
+      <div class="stats">
+        <p>iterations: <span class="iterations">0</span></p>
+        <div class="case">
+          <p>best case: <i>n log n</i></p>
+          <p>average case: <i>n log n</i></p>
+          <p>worst case: <i>n log n</i></p>
+        </div>
+      </div>
+    </div>
+    <div id="quick" class="sort-container">
+      <div class="table"></div>
+      <div class="stats">
+        <p>iterations: <span class="iterations">0</span></p>
+        <div class="case">
+          <p>best case: <i>n log n</i></p>
+          <p>average case: <i>n log n</i></p>
+          <p>worst case: <i>n²</i></p>
+        </div>
+      </div>
+    </div>
     <script src="js/app.js"></script>
   </body>
 </html>

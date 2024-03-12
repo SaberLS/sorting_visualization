@@ -22,5 +22,12 @@
 .sort-container {
     display: grid;
     grid-template-columns: 10fr 1fr;
-    height: 480px;
+    height: 33vh;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }

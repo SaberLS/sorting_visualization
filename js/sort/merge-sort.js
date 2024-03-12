@@ -66,7 +66,6 @@ async function merge(container, array, left, right) {
   for (let k = left.leftBound; k <= right.rightBound && cancel === 0; k++) {
     await sleep(300);
     container.querySelector(`#arr-index-${k}`).classList.remove("selected");
-    container.querySelector(`#arr-index-${k}`).innerHTML = array[k];
     container.querySelector(`#arr-index-${k}`).style.height = `${array[k]}%`;
   }
 }
