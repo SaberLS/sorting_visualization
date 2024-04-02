@@ -29,7 +29,7 @@ async function partition(container, array, leftBound, rightBound) {
   const pivot = array[rightBound];
   const pivot_element = container.querySelector(`#arr-index-${rightBound}`);
   pivot_element.classList.add('selected');
-  await sleep(300);
+  await sleep();
 
   let i = leftBound - 1;
   let j_element;
@@ -44,7 +44,7 @@ async function partition(container, array, leftBound, rightBound) {
       i_element = container.querySelector(`#arr-index-${i}`);
       swap(j_element, i_element);
       [array[i], array[j]] = [array[j], array[i]];
-      await sleep(300);
+      await sleep();
     }
     j_element.classList.remove('selected');
   }
@@ -53,7 +53,7 @@ async function partition(container, array, leftBound, rightBound) {
   i_element = container.querySelector(`#arr-index-${i}`);
   i_element.classList.add('selected');
 
-  await sleep(300);
+  await sleep();
   swap(pivot_element, i_element);
   [array[i], array[rightBound]] = [array[rightBound], array[i]];
 

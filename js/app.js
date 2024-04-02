@@ -3,13 +3,19 @@ import bubble_sort from "./sort/bubble-sort.js";
 import merge_sort from "./sort/merge-sort.js";
 import quick_sort from "./sort/quick-sort.js";
 
-export let cancel = 0;
+export let cancel = 0; //used to stop sorting functions
+export let speed = 300; //used to change time awaited by sleep() function
 
+//buttons
 const sort_btn = document.getElementById("sort-btn");
 const random_btn = document.getElementById("random-btn");
 const descending_btn = document.getElementById("descending-btn");
 const sorted_btn = document.getElementById("sorted-btn");
+const speed_down_btn = document.getElementById("speed-down-btn");
+const speed_up_btn = document.getElementById("speed-up-btn");
+const current_speed = document.getElementById("current-speed");
 
+//sorting containers
 const bubble_sort_container = document.getElementById("bubble");
 const merge_sort_container = document.getElementById("merge");
 const quick_sort_container = document.getElementById("quick");
@@ -101,4 +107,18 @@ sorted_btn.addEventListener("click", () => {
   make_table(bubble_sort_container, bubble_array);
   merge_sort_container.querySelector(".table").innerHTML = bubble_sort_container.querySelector(".table").innerHTML;
   quick_sort_container.querySelector(".table").innerHTML = bubble_sort_container.querySelector(".table").innerHTML;
+});
+
+speed_down_btn.addEventListener("click", () => {
+  speed === 100 ? speed_up_btn.disabled = null : null;
+  speed += 100;
+  current_speed.innerText -= 1;
+  speed === 500 ? speed_down_btn.disabled = true : null;
+})
+
+speed_up_btn.addEventListener("click", () => {
+  speed === 500 ? speed_down_btn.disabled = null : null;
+  speed -= 100;
+  current_speed.innerText = Number(current_speed.innerText) + 1;
+  speed === 100 ? speed_up_btn.disabled = true : null;
 });

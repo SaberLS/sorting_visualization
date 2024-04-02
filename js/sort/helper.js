@@ -11,6 +11,7 @@ export function make_table(container, array) {
   container.querySelector(".table").innerHTML = table;
 }
 
-export function sleep(time) {
-  return new Promise(r => setTimeout(r, time));
+import { speed } from "../app";
+export function sleep() {
+  return new Promise(r => setTimeout(r, speed));
 }

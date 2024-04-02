@@ -2,8 +2,6 @@ import { sleep, swap } from "./helper";
 import { cancel } from "../app";
 
 export default async function bubble_sort(container, array) {
-  console.log(container);
-  console.log(array);
   let counter = 0;
   container.querySelector(".iterations").innerHTML = counter;
 
@@ -18,7 +16,7 @@ export default async function bubble_sort(container, array) {
 
       previous.classList.add("selected");
       current.classList.add("selected");
-      await sleep(300);
+      await sleep();
 
       if (array[i - 1] > array[i]) {
         swap(previous, current);
